@@ -16,9 +16,22 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
+# Declare build arguments
+ARG NOCODB_URL
+ARG NOCODB_API_TOKEN
+ARG NOCODB_PROJECT_ID
+ARG NOCODB_TABLE_ORDERS
+ARG NOCODB_TABLE_EXPENSES
+ARG NOCODB_TABLE_PRODUCTS
+
+# Make them available as environment variables during build
+ENV NOCODB_URL=$NOCODB_URL
+ENV NOCODB_API_TOKEN=$NOCODB_API_TOKEN
+ENV NOCODB_PROJECT_ID=$NOCODB_PROJECT_ID
+ENV NOCODB_TABLE_ORDERS=$NOCODB_TABLE_ORDERS
+ENV NOCODB_TABLE_EXPENSES=$NOCODB_TABLE_EXPENSES
+ENV NOCODB_TABLE_PRODUCTS=$NOCODB_TABLE_PRODUCTS
+
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
