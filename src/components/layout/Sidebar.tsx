@@ -2,59 +2,99 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Package, ShoppingCart, Calculator, Wallet, Settings } from "lucide-react";
+import {
+    LayoutDashboard,
+    Package,
+    ShoppingCart,
+    Calculator,
+    Wallet,
+    Settings,
+    HelpCircle,
+    LogOut
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-    { name: "Dashboard", href: "/", icon: LayoutDashboard },
-    { name: "Inventory", href: "/inventory", icon: Package },
-    { name: "Orders", href: "/orders", icon: ShoppingCart },
-    { name: "Expenses", href: "/expenses", icon: Wallet },
-    { name: "Profit Calc", href: "/calculator", icon: Calculator },
-    // { name: "Settings", href: "/settings", icon: Settings },
+const menuGroups = [
+    {
+        title: "GENERAL",
+        items: [
+            { name: "Dashboard", href: "/", icon: LayoutDashboard },
+            { name: "Inventory", href: "/inventory", icon: Package },
+        ],
+    },
+    {
+        title: "MANAGEMENT",
+        items: [
+            { name: "Orders", href: "/orders", icon: ShoppingCart },
+            { name: "Expenses", href: "/expenses", icon: Wallet },
+            { name: "Calculator", href: "/calculator", icon: Calculator },
+        ],
+    },
+    {
+        title: "SUPPORT",
+        items: [
+            { name: "Settings", href: "/settings", icon: Settings },
+            { name: "Help", href: "/help", icon: HelpCircle },
+        ],
+    },
 ];
 
 export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <div className="flex h-full w-16 flex-col items-center border-r bg-white py-4 shadow-sm sm:w-64 sm:items-stretch sm:px-4">
-            <div className="mb-8 flex items-center justify-center sm:justify-start sm:px-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-bold">
-                    S
+        <div className="flex h-full w-64 flex-col border-r bg-white text-slate-600 font-sans">
+            <div className="flex h-20 items-center px-6 border-b border-gray-50">
+                <div className="flex items-center gap-2 font-bold text-xl text-indigo-600 tracking-tight">
+                    <div className="h-8 w-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                        <LayoutDashboard className="h-5 w-5" />
+                    </div>
+                    Nexus
                 </div>
-                <span className="ml-2 hidden text-lg font-bold text-gray-900 sm:block">Store Manager</span>
             </div>
 
-            <nav className="flex flex-1 flex-col gap-2">
-                {navItems.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = pathname === item.href;
+            <div className="flex-1 overflow-y-auto py-6">
+                <nav className="space-y-8 px-4">
+                    {menuGroups.map((group) => (
+                        <div key={group.title}>
+                            <h3 className="mb-3 px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                                {group.title}
+                            </h3>
+                            <div className="space-y-1">
+                                {group.items.map((item) => {
+                                    const isActive = pathname === item.href;
+                                    return (
+                                        <Link
+                                            key={item.name}
+                                            href={item.href}
+                                            className={cn(
+                                                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                                                isActive
+                                                    ? "bg-indigo-50 text-indigo-600 shadow-sm"
+                                                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                                            )}
+                                        >
+                                            <item.icon
+                                                className={cn(
+                                                    "h-5 w-5",
+                                                    isActive ? "text-indigo-600" : "text-slate-400 group-hover:text-slate-500"
+                                                )}
+                                            />
+                                            {item.name}
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </nav>
+            </div>
 
-                    return (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={cn(
-                                "flex items-center justify-center rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 sm:justify-start sm:px-3",
-                                isActive && "bg-blue-50 text-blue-600 font-medium"
-                            )}
-                        >
-                            <Icon className="h-5 w-5 sm:mr-3" />
-                            <span className="hidden sm:block">{item.name}</span>
-                        </Link>
-                    );
-                })}
-            </nav>
-
-            <div className="mt-auto border-t pt-4">
-                <div className="flex items-center justify-center sm:justify-start sm:px-2 p-2">
-                    <div className="h-8 w-8 rounded-full bg-gray-200"></div>
-                    <div className="ml-3 hidden sm:block">
-                        <p className="text-sm font-medium text-gray-700">User</p>
-                        <p className="text-xs text-gray-500">Admin</p>
-                    </div>
-                </div>
+            <div className="p-4 border-t border-gray-50">
+                <button className="flex w-full items-center gap-3 rounded-xl p-2 hover:bg-slate-50 text-slate-500 transition-colors">
+                    <LogOut className="h-5 w-5" />
+                    <span className="text-sm font-medium">Log Out</span>
+                </button>
             </div>
         </div>
     );
