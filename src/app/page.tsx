@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { ArrowUpRight, ArrowDownRight, MoreHorizontal, Filter, TrendingUp, Percent, RotateCcw } from "lucide-react";
 import { DashboardCharts } from "@/components/dashboard/DashboardCharts";
 import { noco } from "@/lib/nocodb";

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { noco } from "@/lib/nocodb";
 import { Order } from "@/lib/types";
 import { Badge } from "lucide-react";

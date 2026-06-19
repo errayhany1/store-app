@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { noco } from "@/lib/nocodb";
 import { Expense } from "@/lib/types";
 import { PlusCircle } from "lucide-react";
