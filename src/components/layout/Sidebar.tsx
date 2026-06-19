@@ -10,7 +10,8 @@ import {
     Wallet,
     Settings,
     HelpCircle,
-    LogOut
+    LogOut,
+    Crown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -45,11 +46,11 @@ export function Sidebar() {
     return (
         <div className="flex h-full w-64 flex-col border-r bg-white text-slate-600 font-sans">
             <div className="flex h-20 items-center px-6 border-b border-gray-50">
-                <div className="flex items-center gap-2 font-bold text-xl text-indigo-600 tracking-tight">
-                    <div className="h-8 w-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200">
-                        <LayoutDashboard className="h-5 w-5" />
+                <div className="flex items-center gap-2 font-black text-xl text-slate-900 tracking-tight">
+                    <div className="h-8 w-8 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-lg shadow-slate-200">
+                        <Crown className="h-5 w-5" />
                     </div>
-                    Nexus
+                    ERRAYHANY
                 </div>
             </div>
 
@@ -70,14 +71,14 @@ export function Sidebar() {
                                             className={cn(
                                                 "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
                                                 isActive
-                                                    ? "bg-indigo-50 text-indigo-600 shadow-sm"
+                                                    ? "bg-slate-900 text-white shadow-sm"
                                                     : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
                                             )}
                                         >
                                             <item.icon
                                                 className={cn(
                                                     "h-5 w-5",
-                                                    isActive ? "text-indigo-600" : "text-slate-400 group-hover:text-slate-500"
+                                                    isActive ? "text-white" : "text-slate-400 group-hover:text-slate-500"
                                                 )}
                                             />
                                             {item.name}

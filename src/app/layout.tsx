@@ -6,8 +6,33 @@ import { Sidebar } from "@/components/layout/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Telegram Store Manager",
-  description: "Manage inventory, orders, and profits",
+  title: "Errayhany - Meilleur Magasin d'Accessoires Électroniques au Maroc",
+  description: "Découvrez notre large gamme d'accessoires électroniques, câbles, chargeurs rapides, et gadgets intelligents. Livraison gratuite partout au Maroc avec paiement à la livraison (COD).",
+  keywords: ["accessoires électroniques", "chargeurs maroc", "câbles", "écouteurs", "gadgets", "livraison gratuite maroc", "COD", "Errayhany", "ecommerce maroc", "grossiste electronique"],
+  openGraph: {
+    title: "Errayhany - Accessoires Électroniques Maroc",
+    description: "Les meilleurs accessoires électroniques avec livraison gratuite et paiement à la livraison au Maroc.",
+    type: "website",
+    locale: "fr_MA",
+    url: "https://errayhany.com",
+    siteName: "Errayhany",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Errayhany - Accessoires Électroniques Maroc",
+    description: "Les meilleurs accessoires électroniques avec livraison gratuite et paiement à la livraison au Maroc.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

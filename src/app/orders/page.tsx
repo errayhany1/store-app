@@ -1,6 +1,7 @@
 import { noco } from "@/lib/nocodb";
 import { Order } from "@/lib/types";
-import { Badge } from "lucide-react"; // Using Lucide icon as placeholder or similar UI element
+import { Badge } from "lucide-react";
+import { ShipOrderButton } from "@/components/orders/ShipOrderButton";
 
 async function getOrders(): Promise<Order[]> {
     try {
@@ -59,8 +60,16 @@ export default async function OrdersPage() {
                                     <td className="px-6 py-4 text-center">
                                         <StatusBadge status={order.Status} />
                                     </td>
-                                    <td className="px-6 py-4 text-right">
-                                        <a href={`/orders/${order.Id}`} className="text-blue-600 hover:underline">View</a>
+                                    <td className="px-6 py-4 text-right flex justify-end gap-2">
+                                        <a href={`/orders/${order.Id}`} className="text-[#103A6E] hover:underline text-xs font-medium px-2 py-1.5">View</a>
+                                        {order.Status === 'pending' && (
+                                            <ShipOrderButton orderId={order.Id} orderData={order} />
+                                        )}
+                                        {order.Status === 'shipped' && order.TrackingNumber && (
+                                            <a href={order.ShippingLabelURL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200">
+                                                Track
+                                            </a>
+                                        )}
                                     </td>
                                 </tr>
                             ))
