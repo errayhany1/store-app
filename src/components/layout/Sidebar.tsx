@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
@@ -11,31 +12,30 @@ import {
     Settings,
     HelpCircle,
     LogOut,
-    Crown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuGroups = [
     {
-        title: "GENERAL",
+        title: "GÉNÉRAL",
         items: [
-            { name: "Dashboard", href: "/", icon: LayoutDashboard },
-            { name: "Inventory", href: "/inventory", icon: Package },
+            { name: "Tableau de bord", href: "/", icon: LayoutDashboard },
+            { name: "Inventaire", href: "/inventory", icon: Package },
         ],
     },
     {
-        title: "MANAGEMENT",
+        title: "GESTION",
         items: [
-            { name: "Orders", href: "/orders", icon: ShoppingCart },
-            { name: "Expenses", href: "/expenses", icon: Wallet },
-            { name: "Calculator", href: "/calculator", icon: Calculator },
+            { name: "Commandes", href: "/orders", icon: ShoppingCart },
+            { name: "Dépenses", href: "/expenses", icon: Wallet },
+            { name: "Calculateur", href: "/calculator", icon: Calculator },
         ],
     },
     {
         title: "SUPPORT",
         items: [
-            { name: "Settings", href: "/settings", icon: Settings },
-            { name: "Help", href: "/help", icon: HelpCircle },
+            { name: "Paramètres", href: "/settings", icon: Settings },
+            { name: "Aide", href: "/help", icon: HelpCircle },
         ],
     },
 ];
@@ -45,15 +45,19 @@ export function Sidebar() {
 
     return (
         <div className="flex h-full w-64 flex-col border-r bg-white text-slate-600 font-sans">
-            <div className="flex h-20 items-center px-6 border-b border-gray-50">
-                <div className="flex items-center gap-2 font-black text-xl text-slate-900 tracking-tight">
-                    <div className="h-8 w-8 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-lg shadow-slate-200">
-                        <Crown className="h-5 w-5" />
-                    </div>
-                    ERRAYHANY
-                </div>
+            {/* Logo */}
+            <div className="flex h-20 items-center justify-center px-4 border-b border-gray-100 bg-white">
+                <Image
+                    src="/logo.png"
+                    alt="Errayhany Grossiste"
+                    width={180}
+                    height={60}
+                    className="object-contain"
+                    priority
+                />
             </div>
 
+            {/* Navigation */}
             <div className="flex-1 overflow-y-auto py-6">
                 <nav className="space-y-8 px-4">
                     {menuGroups.map((group) => (
@@ -71,14 +75,14 @@ export function Sidebar() {
                                             className={cn(
                                                 "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
                                                 isActive
-                                                    ? "bg-slate-900 text-white shadow-sm"
-                                                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                                                    ? "bg-[#103A6E] text-white shadow-sm"
+                                                    : "text-slate-500 hover:bg-blue-50 hover:text-[#103A6E]"
                                             )}
                                         >
                                             <item.icon
                                                 className={cn(
                                                     "h-5 w-5",
-                                                    isActive ? "text-white" : "text-slate-400 group-hover:text-slate-500"
+                                                    isActive ? "text-white" : "text-slate-400"
                                                 )}
                                             />
                                             {item.name}
@@ -91,10 +95,15 @@ export function Sidebar() {
                 </nav>
             </div>
 
-            <div className="p-4 border-t border-gray-50">
-                <button className="flex w-full items-center gap-3 rounded-xl p-2 hover:bg-slate-50 text-slate-500 transition-colors">
+            {/* Footer */}
+            <div className="p-4 border-t border-gray-100">
+                <div className="mb-3 px-3">
+                    <p className="text-xs font-semibold text-slate-700">Errayhany Grossiste</p>
+                    <p className="text-[11px] text-slate-400">Tableau de bord v2.0</p>
+                </div>
+                <button className="flex w-full items-center gap-3 rounded-xl p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors">
                     <LogOut className="h-5 w-5" />
-                    <span className="text-sm font-medium">Log Out</span>
+                    <span className="text-sm font-medium">Déconnexion</span>
                 </button>
             </div>
         </div>
