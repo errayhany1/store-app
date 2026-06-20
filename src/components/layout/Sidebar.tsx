@@ -48,7 +48,7 @@ export function Sidebar() {
             <div className="flex h-20 items-center justify-center px-4 border-b border-gray-100 bg-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src="/logo.jpg"
+                    src="/logo.png"
                     alt="IMDEN STORE"
                     style={{ maxWidth: '160px', maxHeight: '56px', objectFit: 'contain' }}
                 />
