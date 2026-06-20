@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
@@ -47,13 +46,11 @@ export function Sidebar() {
         <div className="flex h-full w-64 flex-col border-r bg-white text-slate-600 font-sans">
             {/* Logo */}
             <div className="flex h-20 items-center justify-center px-4 border-b border-gray-100 bg-white">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                     src="/logo.jpg"
-                    alt="Errayhany Grossiste"
-                    width={180}
-                    height={60}
-                    className="object-contain"
-                    priority
+                    alt="IMDEN STORE"
+                    style={{ maxWidth: '160px', maxHeight: '56px', objectFit: 'contain' }}
                 />
             </div>
 
@@ -98,7 +95,7 @@ export function Sidebar() {
             {/* Footer */}
             <div className="p-4 border-t border-gray-100">
                 <div className="mb-3 px-3">
-                    <p className="text-xs font-semibold text-slate-700">Errayhany Grossiste</p>
+                    <p className="text-xs font-semibold text-slate-700">IMDEN STORE</p>
                     <p className="text-[11px] text-slate-400">Tableau de bord v2.0</p>
                 </div>
                 <button className="flex w-full items-center gap-3 rounded-xl p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors">
