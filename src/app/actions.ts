@@ -97,3 +97,23 @@ export async function shipOrder(orderId: string, orderData: any) {
         return { success: false, error: e.message };
     }
 }
+
+export async function cancelOrder(orderId: string) {
+    try {
+        await noco.dbTableRow.update(
+            "noco",
+            process.env.NOCODB_PROJECT_ID!,
+            process.env.NOCODB_TABLE_ORDERS!,
+            orderId,
+            {
+                Status: "returned" // Maps to Cancelled/Returned in NocoDB
+            }
+        );
+        revalidatePath(`/orders/${orderId}`);
+        revalidatePath("/orders");
+        return { success: true };
+    } catch (e: any) {
+        console.error("Cancel Failed:", e);
+        return { success: false, error: e.message };
+    }
+}

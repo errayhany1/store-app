@@ -6,21 +6,21 @@ import { Sidebar } from "@/components/layout/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Errayhany - Meilleur Magasin d'Accessoires Électroniques au Maroc",
-  description: "Découvrez notre large gamme d'accessoires électroniques, câbles, chargeurs rapides, et gadgets intelligents. Livraison gratuite partout au Maroc avec paiement à la livraison (COD).",
-  keywords: ["accessoires électroniques", "chargeurs maroc", "câbles", "écouteurs", "gadgets", "livraison gratuite maroc", "COD", "Errayhany", "ecommerce maroc", "grossiste electronique"],
+  title: "IMDEN STORE - Meilleur Magasin d'Accessoires Électroniques",
+  description: "Découvrez notre large gamme d'accessoires électroniques. Livraison gratuite partout au Maroc.",
+  keywords: ["accessoires électroniques", "chargeurs", "câbles", "écouteurs", "gadgets", "imden", "ecommerce"],
   openGraph: {
-    title: "Errayhany - Accessoires Électroniques Maroc",
-    description: "Les meilleurs accessoires électroniques avec livraison gratuite et paiement à la livraison au Maroc.",
+    title: "IMDEN STORE",
+    description: "Les meilleurs accessoires électroniques au Maroc.",
     type: "website",
     locale: "fr_MA",
-    url: "https://errayhany.com",
-    siteName: "Errayhany",
+    url: "https://imdenstore.com",
+    siteName: "IMDEN STORE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Errayhany - Accessoires Électroniques Maroc",
-    description: "Les meilleurs accessoires électroniques avec livraison gratuite et paiement à la livraison au Maroc.",
+    title: "IMDEN STORE",
+    description: "Les meilleurs accessoires électroniques au Maroc.",
   },
   robots: {
     index: true,

@@ -48,7 +48,7 @@ export function Sidebar() {
             {/* Logo */}
             <div className="flex h-20 items-center justify-center px-4 border-b border-gray-100 bg-white">
                 <Image
-                    src="/logo.png"
+                    src="/logo.jpg"
                     alt="Errayhany Grossiste"
                     width={180}
                     height={60}
